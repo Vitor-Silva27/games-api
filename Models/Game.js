@@ -11,7 +11,7 @@ const Game = connection.define("games", {
     allowNull: false,
   },
   price: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
 });
