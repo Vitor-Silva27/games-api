@@ -47,10 +47,52 @@ router.delete("/game/:id", (req, res) => {
       where: {
         id: id,
       },
-    }).then(() =>{
-        res.sendStatus(200);
-    })
+    }).then(() => {
+      res.sendStatus(200);
+    });
   }
 });
 
+router.put("/game/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const { title, price, year } = req.body;
+  if (isNaN(id)) {
+    res.sendStatus(400);
+  } else {
+    if (title != undefined) {
+      Game.update({
+        title: title
+      },
+      {
+        where: {
+          id: id,
+        },
+      }
+      );
+    }
+    if (price != undefined) {
+      Game.update(
+        {
+          price: price
+        },
+        {
+          where: {
+            id: id,
+          },
+        }
+      );
+    }
+    if (year != undefined) {
+      Game.update({
+        year: year,
+      },
+      {
+        where: {
+          id: id,
+        },
+      });
+    }
+    res.sendStatus(200);
+  }
+});
 module.exports = router;
