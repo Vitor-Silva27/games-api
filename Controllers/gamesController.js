@@ -6,20 +6,22 @@ router.get("/games",(_, res) =>{
     res.statusCode = 200;
 });
 
-/* router.get("/game/:id", (req, res) =>{
+router.get("/game/:id", (req, res) =>{
     const id = parseInt(req.params.id);
     if(isNaN(id)){
         res.sendStatus(400);
     }else{
-        const game = DB.games.find(game => game.id === id);
-        if(game == undefined){
-            res.sendStatus(404);
-        }else{
-            res.statusCode = 200;
+        Game.findOne({
+            where:{
+                id: id
+            }
+        }).then(game => {
             res.json(game);
-        }
+        }).catch(err =>{
+            console.log(err);
+        })
     }
-});  */
+}); 
 
 router.post("/game", (req, res) =>{
     const { title, price, year } = req.body;
