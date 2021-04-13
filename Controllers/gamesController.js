@@ -3,6 +3,9 @@ const router = express.Router();
 const Game = require("../Models/Game");
 
 router.get("/games",(_, res) =>{
+    Game.findAll().then(game =>{
+            res.json(game);
+    })
     res.statusCode = 200;
 });
 
