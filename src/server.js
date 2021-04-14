@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const connection = require("./Database/database");
-const gamesController = require("./Controllers/gamesController");
+const gamesController = require("./Game/gamesController");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,6 +17,4 @@ connection
 
 app.use("/", gamesController);
 
-app.listen(4000, () => {
-  console.log("App is working");
-});
+module.exports = app;

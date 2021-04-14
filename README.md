@@ -1,4 +1,3 @@
 # games-api
-A express.js api to a future e-commerce project that i'm gonna make
 
-# ⚠️ This project is not finished yet
+a simple api to make CRUD in a list of games, i made it to learn about rest apis development
